@@ -9,7 +9,7 @@
     <p>
         <a href="<%= post_path(post.id) %>" class="btn btn-primary">Lire la suite</a>
         <a href="<%= edit_post_path(post.id) %>" class="btn btn-default">Modifier</a>
-        <%= button_to "Supprimer", {:controller => :posts, :action => 'destroy', :id => post.id, data: { confirm: "etes vous sur ?" }}, :method => :delete, class:"btn btn-danger" %>
+        <%= button_to "Supprimer", {:controller => :posts, :action => 'destroy', :id => post.id, data: { confirm: "etes vous sur ?" }}, method: :delete, class:"btn btn-danger" %>
 
 
        

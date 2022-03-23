@@ -14,7 +14,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     @post.update(post_params)
-    redirect_to posts_path
+    redirect_to post_path(@post.id)
   end
 
   def new
@@ -23,7 +23,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.create(post_params)
-    redirect_to posts_path
+    redirect_to post_path(@post.id)
   end
 
   def destroy

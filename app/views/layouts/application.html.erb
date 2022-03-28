@@ -32,6 +32,9 @@
     </nav>
 
     <div class="container" style="padding-top: 5rem;">
+      <% flash.each do |name, msg| %>
+      <div class="alert alert-<%= name %>"> <%= msg %></div>
+      <% end %>
       <%= yield %>
     </div>
   </body>

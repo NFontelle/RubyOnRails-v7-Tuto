@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_23_104101) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_28_135411) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -19,6 +19,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_23_104101) do
     t.string "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "posts_count", default: 0
+  end
+
+  create_table "meta", force: :cascade do |t|
+    t.string "name"
+    t.string "mettable_type"
+    t.bigint "mettable_id"
+    t.index ["mettable_type", "mettable_id"], name: "index_metas_on_mettable"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -26,6 +34,22 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_23_104101) do
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "slug"
+    t.boolean "online", default: false
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_posts_on_category_id"
   end
 
+  create_table "posts_tags", id: false, force: :cascade do |t|
+    t.bigint "post_id", null: false
+    t.bigint "tag_id", null: false
+    t.index ["post_id", "tag_id"], name: "index_posts_tags_on_post_id_and_tag_id"
+    t.index ["tag_id", "post_id"], name: "index_posts_tags_on_tag_id_and_post_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+  end
+
+  add_foreign_key "posts", "categories"
 end

@@ -1,20 +1,30 @@
 class PostsController < ApplicationController
+  
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  
   def index
-    @posts = Post.all
+    #flash.now[:success] = "salut !"
+    #@posts = Post.published.all
+    #@posts = Post.offline.all
+    #@posts = Post.all
+    #@posts = Post.includes(:category).published.all
+    @posts = Post.includes(:category, :tags).all
+
+
   end
 
   def show
-    @post = Post.find(params[:id])
   end
 
   def edit
-    @post = Post.find(params[:id])
   end
 
   def update
-    @post = Post.find(params[:id])
-    @post.update(post_params)
-    redirect_to post_path(@post.id)
+    if @post.update(post_params)
+     redirect_to posts_path, success: "l'article a été modifié avec succès"
+    else
+      render 'edit'
+    end
   end
 
   def new
@@ -23,18 +33,20 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.create(post_params)
-    redirect_to post_path(@post.id)
+    redirect_to post_path(@post.id), success: "l'article a été créé avec succès"
   end
 
   def destroy
-    @post = Post.find(params[:id])
     @post.destroy
-    redirect_to posts_path
+    redirect_to posts_path, success: "l'article a été supprimé avec succès"
   end
   
   private
   def post_params
-    params.require(:post).permit(:name, :content)
+    params.require(:post).permit(:name, :content, :slug)
+  end
+  def set_post
+    @post = Post.find(params[:id])
   end
 
 

@@ -1,2 +1,24 @@
-<h1>Performances#edit</h1>
-<p>Find me in app/views/performances/edit.html.erb</p>
+<h1> Modifier la performance</h1> 
+
+<%= form_for @performance do |f| %>
+    <div class="form-group">
+        <label>Discipline</label>
+        <%= f.text_field :discipline, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+        <label>Epreuve</label>
+        <%= f.text_field :event, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+        <label>classement</label>
+        <%= f.text_field :rank, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+        <label>Observations</label>
+        <%= f.text_area :observation, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Modifier</button>
+    </div>
+    
+<% end %>

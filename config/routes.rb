@@ -1,10 +1,4 @@
 Rails.application.routes.draw do
-  get 'categories/index'
-  get 'categories/show'
-  get 'categories/update'
-  get 'categories/destroy'
-  get 'categories/new'
-  get 'categories/edit'
  
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -17,6 +11,12 @@ Rails.application.routes.draw do
   
   resources :posts
   resources :categories
+  resources :horses
+  resources :exercises
+  resources :foods
+  resources :performances
+
+
 
 
 

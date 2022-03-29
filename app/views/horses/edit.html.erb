@@ -1,2 +1,29 @@
-<h1>Horses#edit</h1>
-<p>Find me in app/views/horses/edit.html.erb</p>
+<h1> Modifier la fiche de votre cheval </h1> 
+
+<%= form_for @horse do |f| %>
+    <div class="form-group">
+        <label>Nom</label>
+        <%= f.text_field :name, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+        <label>Age</label>
+        <%= f.number_field :age, class: 'form-control' %> 
+    </div>
+    <div class="form-group">
+        <label>Race</label>
+        <%= f.text_field :breed, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+        <label>Taille (cm)</label>
+        <%= f.number_field :size, class: 'form-control' %>
+    </div>
+   
+    <div class="form-group">
+        <label>Sexe</label>
+        <%= f.text_field :sex, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Modifier</button>
+    </div>
+    
+<% end %>

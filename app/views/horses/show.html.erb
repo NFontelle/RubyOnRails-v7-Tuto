@@ -1,2 +1,10 @@
-<h1>Horses#show</h1>
-<p>Find me in app/views/horses/show.html.erb</p>
+<h1><%= @horse.name%></h1>
+
+<p> age : <%= @horse.age%> ans</p>
+<p> race : <%= @horse.breed%></p>
+<p> sexe : <%= @horse.sex%></p>
+<p> taille : <%= @horse.size%> cm</p>
+
+<p>
+    <a href="<%= horses_path %>" class="btn btn-primary">Retour</a>
+</p>

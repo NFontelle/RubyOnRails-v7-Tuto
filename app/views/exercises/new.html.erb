@@ -1,0 +1,21 @@
+<h1>Ajouter un exercice</h1>
+
+
+<%= form_for @exercise do |f| %>
+    <div class="form-group">
+        <label>Nom</label>
+        <%= f.text_field :name, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+        <label>Discipline</label>
+        <%= f.text_field :discipline, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+        <label>Description</label>
+        <%= f.text_area :description, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">Créer</button>
+    </div>
+    
+<% end %>

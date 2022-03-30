@@ -13,6 +13,11 @@ class PerformancesController < ApplicationController
   end
 
   def update
+    if @performance.update(performance_params)
+      redirect_to performances_path, success: "l'article a été modifié avec succès"
+     else
+       render 'edit'
+     end
   end
 
   def new

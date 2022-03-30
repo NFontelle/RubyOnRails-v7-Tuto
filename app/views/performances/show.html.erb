@@ -1,2 +1,7 @@
-<h1>Performances#show</h1>
-<p>Find me in app/views/performances/show.html.erb</p>
+<h1>Competition de <%=@performance.discipline %></h1>
+<p>Classé <%= @performance.rank %> dans l'épreuve <%= @performance.event %></p>
+<h3> commentaires : </h3>
+<p> <%= @performance.observation %> </p>
+<p>
+    <a href="<%= performances_path %>" class="btn btn-primary">Retour</a>
+</p>

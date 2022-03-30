@@ -13,7 +13,11 @@ class HorsesController < ApplicationController
   end
 
   def update
-    
+    if @horse.update(horse_params)
+      redirect_to horses_path, success: "le cheval a été modifié avec succès"
+     else
+       render 'edit'
+     end
   end
 
   def new

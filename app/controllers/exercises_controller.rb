@@ -14,6 +14,11 @@ class ExercisesController < ApplicationController
   end
 
   def update
+    if @exercise.update(exercise_params)
+      redirect_to exercises_path, success: "l'éxercice a été modifié avec succès"
+     else
+       render 'edit'
+     end
   end
 
   def new

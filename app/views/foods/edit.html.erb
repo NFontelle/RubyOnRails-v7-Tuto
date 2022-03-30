@@ -1,2 +1,16 @@
-<h1>Foods#edit</h1>
-<p>Find me in app/views/foods/edit.html.erb</p>
+<h1> Modifier l'aliment</h1> 
+
+<%= form_for @food do |f| %>
+    <div class="form-group">
+        <label>Marque</label>
+        <%= f.text_field :brand, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+        <label>Variété</label>
+        <%= f.text_field :variety, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary">modifier</button>
+    </div>
+    
+<% end %>

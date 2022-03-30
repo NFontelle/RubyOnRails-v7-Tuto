@@ -1,2 +1,5 @@
-<h1>Foods#show</h1>
-<p>Find me in app/views/foods/show.html.erb</p>
+<h1>Aliment : <%=@food.brand %></h1>
+<p><%= @food.variety %></p>
+<p>
+    <a href="<%= foods_path %>" class="btn btn-primary">Retour</a>
+</p>

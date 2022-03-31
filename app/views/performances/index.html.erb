@@ -4,6 +4,7 @@
     <thead>
         <tr>
             <td>discipline</td>
+            <td>cheval</td>
             <td>Actions</td>
             
         </tr>
@@ -12,6 +13,11 @@
        <% @performances.each do |performance| %>
             <tr>
                 <td><%= performance.discipline %></td>
+                <td>
+                    <% if performance.horse %>
+                        <p> <%= performance.horse.name %></p>
+                    <% end%>
+                </td>
                 <td>
                     <%= button_to "Détails", performance_path(performance.id), method: :get, class:"btn" %>
                     <%= button_to "Editer", edit_performance_path(performance.id), method: :get, class:"btn btn-primary" %>

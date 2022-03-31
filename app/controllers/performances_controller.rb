@@ -3,7 +3,7 @@ class PerformancesController < ApplicationController
   before_action :set_performance, only: [:show, :edit, :update, :destroy]
 
   def index
-    @performances = Performance.all
+    @performances = Performance.includes(:horse).all
   end
 
   def show
@@ -36,7 +36,7 @@ class PerformancesController < ApplicationController
 
   private
   def performance_params
-    params.require(:performance).permit(:discipline, :event, :rank, :observation)
+    params.require(:performance).permit(:discipline, :event, :rank, :observation, :horse_id)
   end
   def set_performance
     @performance = Performance.find(params[:id])

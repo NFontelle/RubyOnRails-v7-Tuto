@@ -4,7 +4,7 @@
     <thead>
         <tr>
             <td>Nom</td>
-            <td>Résultats</td>
+            <td>ration</td>
             <td>Actions</td>
             
         </tr>
@@ -13,10 +13,8 @@
         <% @horses.each do |horse| %>
             <tr>
                 <td><%= horse.name %></td>
-                <td>
-        <p>test
-        </p>
-   </td>
+                <td> <%= horse.foodvolume %> L  </td>
+                
                 <td>
                     <%= button_to "Détails", horse_path(horse.id), method: :get, class:"btn" %>
                     <%= button_to "Editer", edit_horse_path(horse.id), method: :get, class:"btn btn-primary" %>

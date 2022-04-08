@@ -22,8 +22,18 @@
         <label>Sexe</label>
         <%= f.text_field :sex, class: 'form-control' %>
     </div>
+    
+     <div class="form-group">
+        <label>Ration </label>
+        <%= f.select :horse, :food_ids, Food.all.collect { |f| [f.variety, f.id]}, class: 'form-control' %>
+
+        <%= f.number_field :ration, class: 'form-control' %> Litres
+
+    </div>
+    
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Créer</button>
     </div>
+    
     
 <% end %>

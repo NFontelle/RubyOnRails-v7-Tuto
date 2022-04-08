@@ -3,7 +3,7 @@ class HorsesController < ApplicationController
   before_action :set_horse, only: [:show, :edit, :update, :destroy]
   
   def index
-    @horses = Horse.all
+    @horses = Horse.includes(:foods).all
   end
 
   def show
@@ -39,6 +39,6 @@ class HorsesController < ApplicationController
     @horse = Horse.find(params[:id])
   end
   def horse_params
-    params.require(:horse).permit(:name, :size, :age, :sex, :breed)
+    params.require(:horse).permit(:name, :size, :age, :sex, :breed, :ration, :food_ids )
   end
 end

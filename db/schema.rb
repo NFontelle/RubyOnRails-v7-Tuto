@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_29_082537) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_01_152624) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,18 +24,31 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_29_082537) do
 
   create_table "exercises", force: :cascade do |t|
     t.string "name"
-    t.string "type"
+    t.string "discipline"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "exercises_horses", id: false, force: :cascade do |t|
+    t.bigint "horse_id", null: false
+    t.bigint "exercise_id", null: false
+    t.index ["exercise_id", "horse_id"], name: "index_exercises_horses_on_exercise_id_and_horse_id"
+    t.index ["horse_id", "exercise_id"], name: "index_exercises_horses_on_horse_id_and_exercise_id"
+  end
+
   create_table "foods", force: :cascade do |t|
     t.string "brand"
-    t.string "type"
-    t.integer "volume"
+    t.string "variety"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "foods_horses", id: false, force: :cascade do |t|
+    t.bigint "horse_id", null: false
+    t.bigint "food_id", null: false
+    t.index ["food_id", "horse_id"], name: "index_foods_horses_on_food_id_and_horse_id"
+    t.index ["horse_id", "food_id"], name: "index_foods_horses_on_horse_id_and_food_id"
   end
 
   create_table "horses", force: :cascade do |t|
@@ -46,6 +59,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_29_082537) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "breed"
+    t.integer "foodvolume"
   end
 
   create_table "meta", force: :cascade do |t|
@@ -56,12 +70,14 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_29_082537) do
   end
 
   create_table "performances", force: :cascade do |t|
-    t.string "type"
+    t.string "discipline"
     t.string "event"
     t.string "rank"
     t.text "observation"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "horse_id"
+    t.index ["horse_id"], name: "index_performances_on_horse_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -86,5 +102,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_29_082537) do
     t.string "name"
   end
 
+  add_foreign_key "performances", "horses"
   add_foreign_key "posts", "categories"
 end

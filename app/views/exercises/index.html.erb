@@ -1,2 +1,12 @@
-<h1>Exercises#index</h1>
-<p>Find me in app/views/exercises/index.html.erb</p>
+<h1>Exercices</h1>
+<% @exercises.each do |exe| %>
+    <h3> <%= exe.name %> </h3>
+    <p> <%= exe.discipline %></p>
+
+    <%= button_to "Détails", exercise_path(exe.id), method: :get, class:"btn" %>
+    <%= button_to "Editer", edit_exercise_path(exe.id), method: :get, class:"btn btn-primary" %>
+    <%= button_to "Supprimer", exercise_path(exe.id), method: :delete, class:"btn btn-danger" %>
+<%end%>
+<p>
+<%= button_to "Ajouter", new_exercise_path, method: :get, class:"btn btn-success" %>
+</p>

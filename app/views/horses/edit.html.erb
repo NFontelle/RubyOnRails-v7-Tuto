@@ -25,7 +25,8 @@
     
     <div class="form-group">
         <label>Ration </label>
-        <%= f.select :foods, Food.all.collect { |food| [food.variety, food.id]}, class: 'form-control' %> <%= f.number_field :foodvolume, class: 'form-control' %> Litres
+        <%= f.select :food_id, Food.all.collect { |f| [f.variety, f.id]}, class: 'form-control' %>
+        <%= f.number_field :ration, class: 'form-control' %> Litres
 
     </div>
 

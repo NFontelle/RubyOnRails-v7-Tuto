@@ -25,7 +25,7 @@
     
     <div class="form-group">
         <label>Ration </label>
-        <%= f.select :food_id, Food.all.collect { |f| [f.variety, f.id]}, class: 'form-control' %>
+        <%= f.select :food_ids, Food.pluck(:variety, :id), class: 'form-control' %>
         <%= f.number_field :ration, class: 'form-control' %> Litres
 
     </div>

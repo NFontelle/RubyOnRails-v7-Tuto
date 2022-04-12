@@ -13,7 +13,7 @@
         <% @horses.each do |horse| %>
             <tr>
                 <td><%= horse.name %></td>
-                <td> <%= horse.ration %> L  </td>
+                <td> <%= horse.foods.map(&:variety).join(',') %> <%= horse.ration %> L  </td>
                 
                 <td>
                     <%= button_to "Détails", horse_path(horse.id), method: :get, class:"btn" %>
